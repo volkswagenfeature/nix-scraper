@@ -21,16 +21,17 @@ in
     name = "all";
     paths = ( (map (lib: pkgs.writeTextFile {
         name = "${lib.name}";
-        text = pkgs.fetchurl {
+        text = builtins.readFile ( pkgs.fetchurl {
+        # Why'd I have to do it like this?
           url = "${lib.url}";
           hash = "${lib.hash}";
-        };
+        } );
         destination = "/bin/${lib.name}";
       }) files) ++ [
         (pkgs.writeScriptBin "symlinks" (
           "if [ ! -d \"${staticsPath}\" ]; then mkdir ${staticsPath}; fi;\n" +
           builtins.concatStringsSep "\n" (  map (
-            lib: "ln -sfn \$(readlink -f \$0)/bin/${lib.name} ${staticsPath}/${lib.name};"
+            lib: "ln -sfn \$(dirname \$0)/${lib.name} ${staticsPath}/${lib.name};"
           # replace readlink with something nixy.
           ) files )
           ))
