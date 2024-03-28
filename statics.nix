@@ -11,6 +11,11 @@ let
       url = "https://unpkg.com/htmx.org@1.9.11/dist/htmx.min.js";
       hash = "sha256-0VEHzH8ECp6DsbZhdv2SetQLXgJVgToD+Mz+7UbuQrA=";
     }
+    {
+      name = "htmx-sse.js";
+      url = "https://unpkg.com/htmx.org@1.9.11/dist/ext/sse.js";
+      hash = "sha256-vgWy4iZSefA1Jxrb6gtyo1byDOTfpYcEgb/pxRuCL8E=";
+    }
   ];
   staticsPath = "\$(${pkgs.git}/bin/git rev-parse --show-toplevel)/static";
   

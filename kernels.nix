@@ -10,6 +10,7 @@
       flask
       pandas
       numpy
+      huey
     ]);
   };
 }
