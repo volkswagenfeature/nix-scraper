@@ -1,3 +1,5 @@
+# Predates Huey. Depreciated?
+
 import asyncio
 import numpy
 from time import sleep
@@ -16,3 +18,4 @@ class fakewaiter:
     def run(self):
         sleep(self.sleeptime)
         return f"id ({self.idval}) slept {self.sleeptime:.3f} sec"
+    
